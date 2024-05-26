@@ -1,9 +1,7 @@
 from django.contrib import admin
 from django.urls import path
-from . import views
+from .views import predict
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('predict', views.predict, name='predict'),
-    path('result', views.result, name='result'),
+    path('predict/', predict, name='predict'),
 ]

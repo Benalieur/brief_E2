@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <body class="body_pred"> 
+        <div class="register_page">
+            {% if form %}
+
+            <div class="form">
+                <h2 class="title_form">Estimer votre maison</h2>
+                <form method="post" class="p-4 rounded border shadow">
+                    {% csrf_token %}
+
+                    
+                    {% for field in form %}
+                    <div class="form-group">
+                        <label class="form-label">{{ field.label }}</label>
+                        <div>
+                            <p class='input_field'>{{ field }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                    <div class="container btn_box">
+                        <div class="div_btn">
+                            <button type="submit" class="btn btn-primary">Prédiction</button>
+                        </div>
+                    </div>
+                </form>
+
+            {% elif pred %}
+            <div class="form">
+                <div class="container p-4 rounded border shadow">
+                        <h2 class="title_form">Estimation</h2>
+                        <div> La maison vaut actuellement : $ {{ pred }}</div>
+                </div>
+            </div>
+            {% endif %}
+
+            </div>
+        </div>
+    </body>
+
+{% endblock %}
